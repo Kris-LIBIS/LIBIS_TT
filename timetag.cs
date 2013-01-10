@@ -39,6 +39,11 @@ table {
 
 td {
   vertical-align: top;
+  text-align: left;
+}
+
+tr.spaceBelow > td {
+  padding-bottom: 1em;
 }
 
 #tags {

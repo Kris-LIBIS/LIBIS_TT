@@ -105,7 +105,6 @@ function copyTags()
 
 function makeAppointment()
 {
-  copyTags();
   createAppointment();
 }
 
@@ -140,7 +139,7 @@ System.Gadget.onUndock = FullView;
 var dockedWidth = 120;
 var dockedHeight = 120;
 var undockedWidth = 400;
-var undockedHeight = 520;
+var undockedHeight = 460;
 
 // Amount of time desired to perform transition (in seconds).
 var timeTransition = 0.5;

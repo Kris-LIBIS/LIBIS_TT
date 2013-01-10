@@ -52,7 +52,7 @@
 			<div id="listBoxes">
 				<div>
 					<table>
-						<tr width='20px'>
+						<tr>
 							<td>
 								<span class='title'>Project</span>
 							</td>
@@ -63,7 +63,7 @@
 								</form>
 							</td>
 						</tr>
-						<tr>
+						<tr class='spaceBelow'>
 							<td>
 								<span class='title'>Activity</span>
 							</td>
@@ -72,25 +72,27 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
-								<span class='title'>Institution/SubProject</span>
-							</td>
-							<td>
-								<select id='select_institution' onchange='institutionChanged()' onclick='institutionChanged()'></select>
+							<td colspan='2'>
+								<span class='title'>Institution or SubProject (optional)</span>
 							</td>
 						</tr>
 						<tr>
+							<td colspan='2'>
+								<select id='select_institution' onchange='institutionChanged()' onclick='institutionChanged()'></select>
+							</td>
+						</tr>
+						<tr class='spaceBelow'>
 							<td colspan='2'>
 								<select id='select_subproject' onchange='subprojectChanged()' onclick='subprojectChanged()'></select>
 							</td>
 						</tr>
 						<tr>
-							<td>
+							<td width='140px'>
 								<input id='tags' onfocus='this.select(); copyTags();' readonly="readonly" />
 							</td>
 							<td>
 								<span class='submit'>
-									<button id='create_button' onclick='copyTags()'>Create Appointment</button>
+									<button id='create_button' onclick='makeAppointment()'>Create Appointment</button>
 								</span>
 								<span class='submit'>
 									<button id='clear_button' onclick='reload()'>Clear</button>
