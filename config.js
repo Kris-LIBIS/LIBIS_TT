@@ -175,11 +175,11 @@ function getCurrentSubproject() {
 function getCurrentExtraTags() {
   var institution = getCurrentInstitution();
   if (institution) {
-    return " §" + institution.tag;
+    return " $" + institution.tag;
   }
   var subproject = getCurrentSubproject();
   if (subproject) {
-    return " §" + subproject.tag;
+    return " $" + subproject.tag;
   }
   return "";
 }
