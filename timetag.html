@@ -28,13 +28,16 @@
 		<script type="text/javascript"
 				src="http://libis.timetag.it/gcal/2b2c992bc966aed8e69dce69a802e7c6a2427782-1068/creator_data.js?v=0.1"></script>
 		<script type="text/vbscript" src="timetag.vbs"></script>
+		<script type="text/javascript" src="Settings.js"></script>
 		<script type="text/javascript" src="config.js"></script>
 		<script type="text/javascript" src="lib.js"></script>
 		<script type="text/jscript" language="jscript">
 			function init()
 			{
 				initializeSidebar();
-				
+				setClearAtNewProjectDefault(true);
+				setClearAtNewActivityDefault(true);
+
 			}
 
 			function reload()

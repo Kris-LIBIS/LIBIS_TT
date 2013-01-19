@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <gadget>
-  <name>LIBIS Tags</name>
-  <namespace>libis.be</namespace>
-  <version>2013.01.11.0852</version>
-  <author name="LIBIS">
-    <info url="www.libis.be" />
-    <logo src="logo-libis-into-info.gif" />
-  </author>
-  <description>TimeTag.it gadget voor LIBIS Timesheet.</description>
-  <icons>
-    <icon height="64" width="64" src="libis.png" />
-  </icons>
-  <hosts>
-    <host name="sidebar">
-      <autoscaleDPI>true</autoscaleDPI>
-      <base type="HTML" apiVersion="1.0.0" src="timetag.html" />
-      <permissions>full</permissions>
-      <platform minPlatformVersion="1.0" />
-    </host>
-  </hosts>
+	<name>LIBIS Tags</name>
+	<namespace>libis.be</namespace>
+	<version>2013.01.19.1733</version>
+	<author name="LIBIS">
+		<info url="www.libis.be" />
+		<logo src="logo-libis-into-info.gif" />
+	</author>
+	<description>TimeTag.it gadget voor LIBIS Timesheet.</description>
+	<icons>
+		<icon height="64" width="64" src="libis.png" />
+	</icons>
+	<hosts>
+		<host name="sidebar">
+			<autoscaleDPI>true</autoscaleDPI>
+			<base type="HTML" apiVersion="1.0.0" src="timetag.html" />
+			<permissions>full</permissions>
+			<platform minPlatformVersion="1.0" />
+		</host>
+	</hosts>
 </gadget>

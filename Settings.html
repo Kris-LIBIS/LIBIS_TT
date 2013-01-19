@@ -1,43 +1,50 @@
 ﻿<html>
-  <head>
-    <style type="text/css">
-      body
-        {
-            margin: 0;
-            width: 500px;
-            height: 120px;
-            font-family: verdana;
-            font-weight: bold;
-            font-size: 10px;
-        }
-        
-        #calendarName
-        {
-            width: 300px;
-        }
-        
-        #spanID
-        {
-            display: none;
-        }
-    
-    </style>
-    <script src="Settings.js" type="text/javascript"></script>
-    <script src="Settings.vbs" type="text/vbscript"></script>
-    <title></title>
-  </head>
-  <body>
-    <div class="style1">
-      <span id="spanName">Timesheet calendar:
-		<input type="text" name="calendarName" id="calendarName" disabled="true" />
-	  </span>
-      <span id="spanID">calendar ID: 
-		<input type="text" name="calendarID" id="calendarID" />
-	  </span>
-	  <br />
-      <span>
-        <input onclick="selectCalendar()" type="button" size="2" value="Select Calendar" />
-      </span>
-    </div>
-  </body>
+	<head>
+		<style type="text/css">
+			body
+			{
+				margin: 0;
+				width: 500px;
+				height: 120px;
+				font-family: verdana;
+				font-weight: bold;
+				font-size: 10px;
+			}
+			
+			#calendarName
+			{
+				width: 300px;
+			}
+			
+			#spanID
+			{
+				display: none;
+			}
+		</style>
+		<script src="Settings.js" type="text/javascript"></script>
+		<script src="Settings.vbs" type="text/vbscript"></script>
+		<title></title>
+	</head>
+	<body>
+		<div class="style1">
+			<span id="spanName">Timesheet calendar:
+				<input type="text" name="calendarName" id="calendarName" disabled="true" />
+			</span>
+			<span id="spanID">calendar ID: 
+				<input type="text" name="calendarID" id="calendarID" />
+			</span>
+			<br />
+			<span>
+				<input onclick="selectCalendar()" type="button" size="2" value="Select Calendar" />
+			</span>
+			<br /><br />
+			<span>
+				Clear Institution and Subproject selection:
+				<br />
+				<input type="checkbox" name="clearAtNewProject" id="clearAtNewProject" value="CANP" checked>when selecting a Project</input>
+				<br />
+				<input type="checkbox" name="clearAtNewActivity" id="clearAtNewActivity" value="CANA">when selecting an Activity</input>
+			</span>
+		</div>
+	</body>
 </html>
