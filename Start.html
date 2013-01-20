@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title></title>
+		<style type="text/css">
+			body
+			{
+				margin: 0;
+				font-family: verdana;
+				font-weight: bold;
+				font-size: 10px;
+				width: 64px;
+				height: 64px;
+			}
+			
+		</style>
+		<script>
+			function ShowFlyout() {
+				System.Gadget.Flyout.show = true;
+			}
+			
+			function init() {
+				System.Gadget.Flyout.file = "timetag.html";
+				System.Gadget.settingsUI = "Settings.html";
+			}
+		</script>
+	</head>
+	<body onload="init()" onclick="ShowFlyout();">
+		<span>
+			<img src="libis.png" />
+		</span>
+	</body>
+</html>

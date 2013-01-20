@@ -2,7 +2,7 @@
 <gadget>
 	<name>LIBIS Tags</name>
 	<namespace>libis.be</namespace>
-	<version>2013.01.19.1733</version>
+	<version>2013.01.20.2338</version>
 	<author name="LIBIS">
 		<info url="www.libis.be" />
 		<logo src="logo-libis-into-info.gif" />
@@ -14,7 +14,7 @@
 	<hosts>
 		<host name="sidebar">
 			<autoscaleDPI>true</autoscaleDPI>
-			<base type="HTML" apiVersion="1.0.0" src="timetag.html" />
+			<base type="HTML" apiVersion="1.0.0" src="start.html" />
 			<permissions>full</permissions>
 			<platform minPlatformVersion="1.0" />
 		</host>

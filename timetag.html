@@ -2,29 +2,6 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="timetag.cs" />
-		<style type="text/css">
-			body
-			{
-				margin: 0;
-				font-family: verdana;
-				font-weight: bold;
-				font-size: 10px;
-			}
-			#gadgetContent
-			{
-				width: 100%;
-				vertical-align: middle;
-				text-align: center;
-				overflow: hidden;
-			}
-			
-			#listBoxes
-			{
-				background-color: #D0D0D0;
-				padding: 10px;
-			}
-			
-		</style>
 		<script type="text/javascript"
 				src="http://libis.timetag.it/gcal/2b2c992bc966aed8e69dce69a802e7c6a2427782-1068/creator_data.js?v=0.1"></script>
 		<script type="text/vbscript" src="timetag.vbs"></script>
@@ -35,23 +12,12 @@
 			function init()
 			{
 				initializeSidebar();
-				setClearAtNewProjectDefault(true);
-				setClearAtNewActivityDefault(true);
-
-			}
-
-			function reload()
-			{
-				window.location.reload();
 			}
 		</script>
 		<title></title>
 	</head>
 	<body onload="init()">
 		<div id='gadgetContent'>
-			<div class="domain">
-				<img src='logo-libis-into-info.gif'/>
-			</div>
 			<div id="listBoxes">
 				<div>
 					<table>
@@ -90,15 +56,12 @@
 							</td>
 						</tr>
 						<tr>
-							<td width='140px'>
+							<td id='tags_column'>
 								<input id='tags' onfocus='this.select(); copyTags();' readonly="readonly" />
 							</td>
 							<td>
 								<span class='submit'>
 									<button id='create_button' onclick='makeAppointment()'>Create Appointment</button>
-								</span>
-								<span class='submit'>
-									<button id='clear_button' onclick='reload()'>Clear</button>
 								</span>
 							</td>
 						</tr>

@@ -78,3 +78,5 @@ function setClearAtNewActivityDefault(value) {
 	}
 }
 
+setClearAtNewProjectDefault(true);
+setClearAtNewActivityDefault(true);

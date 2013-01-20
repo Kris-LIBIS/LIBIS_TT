@@ -1,6 +1,4 @@
-﻿System.Gadget.settingsUI = "Settings.html";
-
-projects = projects.sort(function(a,b) {
+﻿projects = projects.sort(function(a,b) {
 	var regex = /^(\d+)(\.|[a-z])(\d)?/
 
 	a.name.match(regex);
@@ -86,11 +84,11 @@ function initializeSidebar() {
 	populateProjectSelect("");
 	storeReferencesToExtraElements();
 	populateInstitutionSelect();
-	if (System.Gadget.docked) {
-		SmallView();
-	} else {
-		FullView();
-	}
+//	if (System.Gadget.docked) {
+//		SmallView();
+//	} else {
+//		FullView();
+//	}
 }
 
 function getCurrentExtendedTags() {
@@ -136,14 +134,14 @@ function activityChanged() {
 
 
 // Declare the dock and undock event handlers.
-System.Gadget.onDock = SmallView;
-System.Gadget.onUndock = FullView;
+//System.Gadget.onDock = SmallView;
+//System.Gadget.onUndock = FullView;
 
 // Gadget width and height.
 var dockedWidth = 120;
 var dockedHeight = 120;
 var undockedWidth = 400;
-var undockedHeight = 460;
+var undockedHeight = 380;
 
 // Amount of time desired to perform transition (in seconds).
 var timeTransition = 0.5;
