@@ -16,21 +16,34 @@ function boolToString(b) {
 }
 
 function getClearAtNewProject() {
-  return stringToBool(System.Gadget.Settings.readString("ClearAtNewProject"));
+	try {
+		return stringToBool(System.Gadget.Settings.readString("ClearAtNewProject"));
+	} catch (e) {
+		return true;
+	}
 }
 
 function getClearAtNewActivity() {
-  return stringToBool(System.Gadget.Settings.readString("ClearAtNewActivity"));
+	try {
+		return stringToBool(System.Gadget.Settings.readString("ClearAtNewActivity"));
+	} catch (e) {
+		return true;
+	}
 }
 
 function setClearAtNewProject(value) {
-  System.Gadget.Settings.writeString("ClearAtNewProject", boolToString(value));
+	try {
+		System.Gadget.Settings.writeString("ClearAtNewProject", boolToString(value));
+	} catch(e) {}
 }
 
 function setClearAtNewActivity(value) {
-  System.Gadget.Settings.writeString("ClearAtNewActivity", boolToString(value));
+	try {
+		System.Gadget.Settings.writeString("ClearAtNewActivity", boolToString(value));
+	} catch(e) {}
 }
 
+try {
 // Default setting is on
 if (!System.Gadget.Settings.writeString("ClearAtNewProject")) {
   setClearAtNewProject(true);
@@ -39,4 +52,4 @@ if (!System.Gadget.Settings.writeString("ClearAtNewProject")) {
 if (!System.Gadget.Settings.writeString("ClearAtNewActivity")) {
   setClearAtNewActivity(true);
 }
-
+} catch(e) {}
