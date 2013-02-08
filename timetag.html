@@ -2,47 +2,58 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="timetag.cs" />
-		<script type="text/javascript" src="yepnope.js"></script>
-<!--
-		<script type="text/javascript" src="jquery-1.9.0.js"></script>
-		<script type="text/javascript" src="common.js"></script>
-		<script type="text/javascript" src="json2.js"></script>
-		<script type="text/javascript" src="http://libis.timetag.it/gcal/2b2c992bc966aed8e69dce69a802e7c6a2427782-1068/creator_data.js?v=0.1"></script>
-		<script type="text/javascript" src="creator_data.js"></script>
-		<script type="text/javascript" src="libis_overrides.js"></script>
-		<script type="text/javascript" src="config.js"></script>
-		<script type="text/javascript" src="lib.js"></script>
--->
+		<script type="text/javascript" src="jquery-1.9.0.min.js"></script>
+		<script type="text/javascript" src="libis_tt.js"></script>
+		<script type="text/javascript" src="moment.min.js"></script>
+		<script type="text/javascript" src="yepnope.1.5.4-min.js"></script>
+		<script>
+		
+			var projects = new Array();
+			var projects_expire = moment();
+			var institutions = new Array();
+			var subprojects = new Array();
+			var institutions_expire = moment();
+			var favorites = new Array();
+
+			yepnope([
+				{
+					test: window.JSON,
+					nope: "json2.js",
+					both: "load_save_data.js",
+					complete: function() {
+						load_projects();
+						load_institutions();
+						load_favorites();
+					}
+				},{
+						test: (projects.length > 0 && moment().diff(projects_expire) < 0),
+						nope: "timeout=1000!http://libis.timetag.it/gcal/2b2c992bc966aed8e69dce69a802e7c6a2427782-1068/creator_data.js?_q_=" + moment().valueOf(),
+						yep: 'timetag_lib.js',
+						callback: function(url, result, key) {
+							if (!result) { save_projects(); }
+						}
+					},{
+						test: (institutions.length > 0 || moment().diff(institutions_expire) < 0),
+						nope: "timeout=1000!http://musealecollecties.be.halotest.cc.kuleuven.be/institutions.js?_q_=" + moment().valueOf(),
+						callback: function(url, result, key) {
+							if (!result) { save_institutions(); }
+						}
+					},{
+						load: 'libis_overrides.js',
+						complete: function() { initializeSidebar(); }
+				}
+			]);
+		</script>
 		<script type="text/vbscript" src="timetag.vbs"></script>
 		<script type="text/jscript" language="jscript">
 		
 			function init() {
+/*			
 				yepnope([
 					{
-						load: [ 'jquery-1.9.0.js', 'common.js' ]
-					},{
-						test: window.JSON,
-						nope: 'json2.js'
-					},{
-						load: [ 'timeout=1000!http://libis.timetag.it/gcal/2b2c992bc966aed8e69dce69a802e7c6a2427782-1068/creator_data.js?v=0.1', 'creator_data.js', 'libis_overrides.js' ],
-						complete: function() {
-							if (typeof projects === 'undefined') {
-								load_projects();
-							} else {
-								sort_projects();
-								save_projects();
-							}
-							if (projects.length === 0) {
-								init_projects();
-							}
-						}
-					},{
-						load: [ 'config.js', 'lib.js' ],
-						complete: function() {
-							initializeSidebar();
-						}
 					}
 				]);
+*/
 			}
 			
 		</script>
@@ -60,7 +71,7 @@
 							<td>
 								<form action='#' onsubmit='return false'>
 									<input id='search_projects' onkeyup='searchProjects()' type='text' value='' /> 
-									<select id='select_project' onchange='projectChanged()' onclick='projectChanged()' size='8'></select>
+									<select id='select_project' onclick='projectChanged()' onchange='projectChanged()' size='8'></select>
 								</form>
 							</td>
 						</tr>
@@ -69,7 +80,7 @@
 								<span class='title'>Activity</span>
 							</td>
 							<td>
-								<select id='select_activity' onchange='activityChanged()' onclick='activityChanged()'></select>
+								<select id='select_activity' onclick='activityChanged()' onchange='activityChanged()'></select>
 							</td>
 						</tr>
 						<tr>
@@ -79,21 +90,22 @@
 						</tr>
 						<tr>
 							<td colspan='2'>
-								<select id='select_institution' onchange='institutionChanged()' onclick='institutionChanged()'></select>
+								<select id='select_institution' onchange='institutionChanged()'></select>
 							</td>
 						</tr>
 						<tr class='spaceBelow'>
 							<td colspan='2'>
-								<select id='select_subproject' onchange='subprojectChanged()' onclick='subprojectChanged()'></select>
+								<select id='select_subproject' onchange='subprojectChanged()'></select>
 							</td>
 						</tr>
 						<tr>
 							<td id='tags_column'>
-								<input id='tags' onfocus='copyTags()' readonly="readonly" />
+								<select id='tags' onchange='tagsChanged()'></select>
 							</td>
 							<td>
 								<span class='submit'>
-									<button id='create_button' onclick='makeAppointment()'>Create Appointment</button>
+									<button id='copy_button' class='button' onclick='copyTags()'>Copy</button>
+									<button id='create_button' class='button' onclick='makeAppointment()'>Create Appointment</button>
 								</span>
 							</td>
 						</tr>

@@ -32,7 +32,7 @@
 	new Institution('serv','SERV'),
 	new Institution('vdic','VDIC'),
 	new Institution('vlp','Vlaams parlement')
-].sort(function(a,b) { return ((a.name < b.name) ? -1 : ((a.name > b.name) ? 1 : 0)); });
+];
 
 var subprojects = [
 	new SubProject('adlib','Adlib','#heron @pro'),
@@ -79,113 +79,4 @@ var subprojects = [
 	new SubProject('ng','Next Generation Lirias','#lirias'),
 	new SubProject('V4','Versie 4 Limo','#limo @pro'),
 	new SubProject('link','Link Builder','#limo')
-].sort(function(a,b) { return ((a.name < b.name) ? -1 : ((a.name > b.name) ? 1 : 0)); });
-
-function Institution(tag,name) {
-	this.name = name;
-	this.tag = tag;
-}
- 
-function SubProject(tag, name, for_tag_only) {
-	this.name = name;
-	this.tag = tag;
-	this.limit = null;
-	if (for_tag_only) {
-		this.limit = for_tag_only;
-	}
-	this.valid_for = function(project, activity) {
-	if (project == null) {
-		return false;
-	}
-		if(!this.limit) {
-			return true;
-		}
-		if (this.limit == '#' + project.tag) {
-			return true;
-		}
-		if (activity && this.limit == '#' + project.tag + ' @' + activity.tag) {
-			return true;
-		}
-		return false;
-	};
-}
-
-function selectItem(selector, item) {
-	for (var i = 0; i < selector.element.options.length; i++) {
-		if (selector.element.options[i].item == item) {
-			selector.element.selectedIndex = i;
-			return;
-		}
-	}
-}
-
-function storeReferencesToExtraElements() {
-	window.institutionSelect = new Select("select_institution", { disableOnEmpty: true, emptyMessage: "No institutions", helpMessage: " " });
-	window.subprojectSelect = new Select("select_subproject", { disableOnEmpty: true, emptyMessage: "No projects", helpMessage: " " });
-}
-
-
-function populateInstitutionSelect(clearSelection) {
-	var currentInstitution = getCurrentInstitution();
-	institutionSelect.clear();
-	for (var i = 0; i < institutions.length; i++) {
-		institutionSelect.addItem(institutions[i]);
-	}
-	institutionSelect.finalize();
-	if (!clearSelection && currentInstitution) {
-		selectItem(institutionSelect,currentInstitution);
-	}
-}
-	
-function populateSubprojectSelect(clearSelection) {
-	var currentProject = getCurrentProject();
-	var currentActivity = getCurrentActivity();
-	var currentSubproject = getCurrentSubproject();
-	subprojectSelect.forProject = currentProject;
-	subprojectSelect.forActivity = currentActivity;
-	subprojectSelect.clear();
-	for (var i = 0; i < subprojects.length; i++) {
-		var subproject = subprojects[i];
-		if (subproject.valid_for(currentProject,currentActivity)) {
-			subprojectSelect.addItem(subproject);
-		}
-	}
-	subprojectSelect.finalize();
-	if (!clearSelection && currentSubproject) {
-		selectItem(subprojectSelect,currentSubproject);
-	}
-}
-
-function institutionChanged() {
-	populateSubprojectSelect(true);
-	showAllTags();
-}
-
-function subprojectChanged() {
-	populateInstitutionSelect(true);
-	showAllTags();
-}
-
-function getCurrentInstitution() {
-	return institutionSelect.getSelectedItem();
-}
-
-function getCurrentSubproject() {
-	return subprojectSelect.getSelectedItem();
-}
-
-function getCurrentExtraTags() {
-	var institution = getCurrentInstitution();
-	if (institution) {
-		return " $" + institution.tag;
-	}
-	var subproject = getCurrentSubproject();
-	if (subproject) {
-		return " $" + subproject.tag;
-	}
-	return "";
-}
-	
-function showExtraTags() {
-	tagsField.value += getCurrentExtraTags();
-}
+];

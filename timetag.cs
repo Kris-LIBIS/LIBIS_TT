@@ -28,7 +28,17 @@
 
 #create_button
 {
-	width: 100%;
+	width: 73%;
+}
+
+#copy_button
+{
+	width: 25%;
+}
+
+.disabled
+{
+	display: none;
 }
 
 input {
