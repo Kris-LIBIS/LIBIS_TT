@@ -62,8 +62,8 @@ function activityChanged() {
 }
 
 function activityChangedCore() {
-	populateInstitutionSelect(false);
-	populateSubprojectSelect(false);
+	populateInstitutionSelect(true);
+	populateSubprojectSelect(true);
 }
 
 // event handler: institution changed
